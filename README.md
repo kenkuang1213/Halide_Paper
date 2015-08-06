@@ -1,3 +1,3 @@
-Ken/     : A senergistic framework base on Halide
+Ken/     : A senergistic framework base on Halide  
 Sting/   :  
 Millzon/ :  
