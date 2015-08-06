@@ -1,0 +1,77 @@
+\documentclass{ntuthesis}
+
+\usepackage{times}
+\usepackage{verbatim}
+\usepackage{color}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{wallpaper}
+\usepackage{indentfirst}
+\usepackage{float}
+\usepackage{fontspec}
+% To use Code Blocks
+\usepackage{listings}
+
+
+
+
+% Add Watermark 0.174 6.1725 10.5225
+\DeclareRobustCommand{\watermark}{
+	\CenterWallPaper{0.174}{img/watermark}
+	\setlength{\wpXoffset}{6.1725cm}
+	\setlength{\wpYoffset}{10.5225cm}
+}
+% Using the tex-text mapping for ligatures etc.
+\defaultfontfeatures{Mapping=tex-text}
+
+% Set the default fonts
+\setmainfont{Times New Roman}
+\setCJKmainfont{標楷體}
+
+% Your information goes here
+\input{ntuvars}
+
+\begin{document}
+
+\watermark
+\frontmatter
+
+\makecover
+
+%\makecertification
+
+
+\let\cleardoublepage\clearpage
+\input{acknowledgements}
+\input{abstractEN}
+\include{abstractCH}
+\tableofcontents
+\listoffigures
+\listoftables
+
+\mainmatter
+
+% Your thesis goes here
+\input{Motivation}
+\input{background}
+\input{related}
+\input{implementation}
+\input{experiment}
+\input{conclusion}
+
+
+%\appendix
+
+\backmatter
+
+\addcontentsline{toc}{chapter}{\bibname}
+\bibliographystyle{unsrt}
+
+% Your bibliography goes here
+\nocite{*}
+\bibliography{thesis}
+
+\end{document}
+
