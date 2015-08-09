@@ -1,0 +1,13 @@
+\begin{abstractzh}
+    在影像處理的領域裡，有很多演算法是需要對同一張影像執行同一份核代碼多次。針對此類型演算法，在核代碼之間會有額外負擔產生。我們可以使用核代碼融合來消除這些額外負擔。
+    
+    Halide目前已經提供一種方式來實現核代碼融合，但是此種方法會增加多餘的計算以及多餘的像素存取。我們介紹了另外一種不需要增加多餘計算以及多餘像素存取的方式來實現核代碼融合，希望讓Halide可以加進OpenCL代碼生成機制來提升核代碼融合的效能。
+\end{abstractzh}
+
+\begin{abstracten}
+    In image processing area, there are many algorithms that will need to execute their algorithm multiple times to one image. To this kind of algorithms, there will be redundant overheads between kernels. We can apply kernel fusion to eliminate these overheads. 
+    
+    Halide now provides a way to do kernel fusion, but using this way will cause redundant works and redundant pixels accessed. We introduce another way to perform kernel fusion without redundant works in order for Halide to add this way to OpenCL CodeGen and improve the performance of kernel fusion.
+\cleardoublepage
+\end{abstracten}
+\cleardoublepage

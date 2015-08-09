@@ -1,0 +1,6 @@
+\chapter{Future Work}
+    For the future work, we have three things to do. First, we should add our enqueue\_kernel approach to Halide OpenCL CodeGen and add automatic temporary storage allocation and using them in the kernel source code which we generated. This should improve the OpenCL performance of Halide.
+
+    Second, we need to add temporary storage allocation into Halide OpenCL CodeGen, including OpenCL host source code and kernel source code. Since we need to do allocation at the host part, and change the usage and storing destination to our new allocated temporary storage at the kernel part.
+
+    Last, we should implement full functionality of enqueue\_kernel with the first flag mentioned, CLK\_ENQUEUE\_FLAGS\_NO\_WAIT. This will offer us a new way to improve performance, because we can separate the works that have no dependency issues, and then enqueue a new kernel for these works. And we should also implement full functionality of CLK\_ENQUEUE\_FLAGS\_WAIT\_KERNEL, thus we can use enqueue\_kernel more flexibly and can make sure all work group finish the previous kernel.
