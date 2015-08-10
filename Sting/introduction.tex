@@ -1,0 +1,12 @@
+\chapter{Introduction}
+    In image processing area, it’s common to use multiple filters on one image. So we tried to optimize this kind of image processing.
+
+    Focus on examples that uses more than one filter, we choose the blur algorithm and blur one image many times for a basic example. If we are blurring one image many times, we will first create a blur kernel by using clCreateKernel. And then enqueue this kernel many times by using clEnqueueNDRangeKernel.
+    
+    But every time we enqueue the kernel, we need to return back to the host (normally the CPUs) from the devices (usually the CPUs or GPUs) and do some setup for the next kernel being enqueued, including redirect the previous kernel’s output into the next  kernel’s input arguments by resetting them using clSetKernelArg. These movements can be treated as overhead and can cause performance reduction if many kernels are enqueued.
+    
+    So we tried to reduce or eliminate these overhead by the concept, kernel fusion. This means to fuse several kernel into one kernel, so we don’t need to do the setup for multiple kernels.
+	
+    In order to do kernel fusion, there is a main constraint, how to sync the data. In the original way, the next kernel will be enqueued after the previous kernel finished, which means all the work group finish the previous kernel. So the input of the next kernel will be guaranteed correctness. But in kernel fusion, the correctness of the data can’t be guaranteed because we fuse several kernels into one kernel.
+	
+    Since for stencil algorithms, we need the pixels around the target pixel to calculate the target pixel’s result. But when we fuse several kernels into one, the next kernel can not obtain the result from the previous kernel and causing correctness violation.

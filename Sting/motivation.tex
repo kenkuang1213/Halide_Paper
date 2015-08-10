@@ -1,0 +1,7 @@
+\chapter{Motivation}
+
+    Halide is a powerful language targeting the image processing area. It can generate different source code to execute on different devices, including OpenCL, CUDA, etc.
+
+    Halide provides a schedule named "compute\_at" to perform kernel fusion to OpenCL code. But doing kernel fusion on image processing kernels will have correctness violation issues. Because the input of the second kernel will be the output of the first kernel, the second kernel might not get the correct input. Thus Halide uses redundant works to guarantee the correctness.
+    
+    But the redundant works could be a great influence to the performance, so we try to introduce another way to perform kernel fusion without doing redundant works. The performance of Halide's OpenCL CodeGen may increase after adding this way.

@@ -1,0 +1,3 @@
+\chapter{Conclusion}
+
+    Fusing kernels into one big kernel can reduce OpenCL host APIs overhead. But as the tradeoff, we will need to do redundant works to compute the data needed. This may cause significant performance decreasing if the image kernel too big or the image size too huge. So we introduce another way to do kernel fusion without redundant works. But as the tradeoff, we will have barrier and temporary storge overheads. From the experiment result shown in chapter 5, we can believe that applying our approach to Halide's OpenCL CodeGen will increase the performance of kernel fusion.
