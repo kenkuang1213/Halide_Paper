@@ -3,14 +3,14 @@
 \quad \ \ Because Halide is not naturally support synergistically computing, we builda framework that execute before calling halide function ,by this execution sequence, we can split works become to two or more parts and dispatch the work to CPU and GPU. Because Halide is a language for image processing, output will be an array.Accoding to the Halide pipeline relations,it's guaranteed that each output will be computed independently and could't be influenced by computing sequence.
 With the feature of Halide output, we split output into several sub-blocks by output index and dispatch works by blocks and guarantee that output will be correct.Different from FluidCL, the work assignment of our framework is according to output blocks rather work group in OpenCL.After the execution, we merge the output from different devices become a full result. However Halide is not support this function so we also have to make our framework to receive the output from halide function and merge it and return.
 
-\begin{figure}[!hbtp]
+\begin{figure}[H]
 \centering
 \includegraphics[width=10cm]{img/Framework-SystemFlow.png}
 \caption{System Flow}
 \label{fig:my_label}
 \end{figure}
 
-\begin{figure}[!hbtp]
+\begin{figure}[H]
 \centering
 \includegraphics[width=10cm]{img/show_blocks.png}
 \caption{Output nubmering.Each elements of output array is shown as a tuple(x,y) with x and y being row and column idex,The number shown in boldface is the block id}
@@ -23,21 +23,21 @@ With the feature of Halide output, we split output into several sub-blocks by ou
 
 
 
-\begin{figure}[!hbtp]
+\begin{figure}[H]
 \centering
 \includegraphics[width=10cm]{img/memory_full.png}
 \caption{Original Halide output format}
 \label{fig:Halide_default}
 \end{figure}
 
-\begin{figure}[!hbtp]
+\begin{figure}[H]
 \centering
 \includegraphics[width=10cm]{img/Memory_copy.png}
 \caption{Original Halide output merging}
 \label{fig:Halide_default1}
 \end{figure}
 
-\begin{figure}[!hbtp]
+\begin{figure}[H]
 \centering
 \includegraphics[width=10cm]{img/Memory_copy_new.png}
 \caption{Buffer with reserving space}
@@ -51,7 +51,7 @@ With the feature of Halide output, we split output into several sub-blocks by ou
 
 % Furthermore, we implement work stealing skill to speedup static way. By this implementation, we split the workload of CPU into N blocks from 0 to N-1 and the workload of GPU still keep as one block. The CPU thread process blocks sequentially. After GPU finished its workload, The GPU thread will check the status of blocks from N-1 to 0 which should belong to CPU, if there is a block have not been done, GPU will help to process the block. The workload stealing can improve 8\% more compared to static way.
 
-\begin{figure}[hbtp]
+\begin{figure}[H]
 \centering
 \includegraphics[height=10cm]{img/StaticDispatch.png}
 \caption{Flowchart of Static Dispatch}
@@ -63,7 +63,7 @@ With the feature of Halide output, we split output into several sub-blocks by ou
 \quad \ \ By the implementation above, we create an environment to split computation into CPU part and GPU part. However, the decision of the workload on different devices is still  a problem to programmer ,in addition, to get better workload still need an offline profiler to profile the computation. To solve this problem, we implemented a runtime system to manage the workload by split the output into N blocks from 0 to N-1.we let CPU process blocks in increasing order and GPU process blocks from the other end. By this order, CPU and GPU will execute without overlapping.
 
 	To achieve this implementation, we maintain a status table to record the status of each block. When CPU start to process a block, the runtime of CPU part will check the block status is empty or not .If it is empty, it change the status of the block from empty to computing, otherwise, it will stop the computation of CPU part. And CPU runtime will set the parameter and call halide CPU function. After Halide CPU function finished a block, Halide function will directly write the result into output buffer we prepared and the CPU runtime will change the status of the block to finished and process next block. When GPU runtime is going to process a block, it will also check the status of the block like CPU runtime, only when the status of the block is empty, GPU would process the block. When working thread is going to process to the block which is processed by and other devices, the work thread will be terminated by checking the status of next block, that is, if the status of next target block is not empty which means the other part of work is done by another device, the work thread will be terminated. After both work thread finished its jobs, we will return the final result to the caller.
-\begin{figure}[hbtp]
+\begin{figure}[H]
 \centering
 \includegraphics[height=10cm]{img/DynamicDispatchFlow.png}
 \caption{Flowchart of Dynamic Dispatch}
