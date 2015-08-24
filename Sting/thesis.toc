@@ -1,0 +1,22 @@
+\contentsline {chapter}{Acknowledgement}{i}
+\contentsline {chapter}{摘要}{ii}
+\contentsline {chapter}{Abstract}{iii}
+\contentsline {chapter}{\numberline {1}Motivation}{1}
+\contentsline {chapter}{\numberline {2}Background}{2}
+\contentsline {section}{\numberline {2.1}Halide}{2}
+\contentsline {section}{\numberline {2.2}OpenCL}{2}
+\contentsline {chapter}{\numberline {3}Introduction}{4}
+\contentsline {chapter}{\numberline {4}Methodology}{6}
+\contentsline {section}{\numberline {4.1}Fix correctness violation}{6}
+\contentsline {section}{\numberline {4.2}Halide schedule compute\_at}{6}
+\contentsline {section}{\numberline {4.3}Approach: enqueue\_kernel}{9}
+\contentsline {section}{\numberline {4.4}Comparison between two features}{11}
+\contentsline {section}{\numberline {4.5}Different Approach: enqueue\_kernel}{13}
+\contentsline {section}{\numberline {4.6}Temporary storage allocation}{13}
+\contentsline {chapter}{\numberline {5}Experiments}{15}
+\contentsline {section}{\numberline {5.1}compilation time increase}{15}
+\contentsline {section}{\numberline {5.2}total execution time comparison}{16}
+\contentsline {section}{\numberline {5.3}kernel execution time comparison}{16}
+\contentsline {chapter}{\numberline {6}Future Work}{21}
+\contentsline {chapter}{\numberline {7}Conclusion}{22}
+\contentsline {chapter}{Bibliography}{23}

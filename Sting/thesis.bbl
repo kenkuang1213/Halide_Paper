@@ -1,0 +1,46 @@
+\begin{thebibliography}{1}
+
+\bibitem{clangori}
+{Pekka Jääskeläinen, Carlos Sánchez de La Lama, Erik Schnetter, Kalle
+  Raiskila, Jarmo Takala, Heikki Berg}.
+\newblock Clang: A c language frontend for llvm.
+\newblock 2014.
+
+\bibitem{halideori}
+{Jonathan Ragan-Kelley, Connelly Barnes, Andrew Adams, Sylvain Paris, Frédo
+  Durand, Saman Amarasinghe}.
+\newblock Halide: A language and compiler for optimizing parallelism, locality,
+  and recomputation in image processing pipelines.
+\newblock {\em PLDI 2013}, 2013.
+
+\bibitem{halide12}
+{Jonathan Ragan-Kelley, Andrew Adams, Sylvain Paris, Marc Levoy, Saman
+  Amarasinghe, Frédo Durand}.
+\newblock Decoupling algorithms from schedules for easy optimization of image
+  processing pipelines.
+\newblock {\em SIGGRAPH 2012}, 2012.
+
+\bibitem{halide14}
+{Jonathan Ragan-Kelley}.
+\newblock Decoupling algorithms from the organization of computation for high
+  performance image processing: The design and implementation of the halide
+  language and compiler.
+\newblock 2014.
+
+\bibitem{opencl2.0spec}
+{\em {OpenCL 2.0 Specification}}.
+\newblock {Khronos.}
+\newblock \url{https://www.khronos.org/registry/cl/specs/opencl-2.0.pdf}.
+
+\bibitem{poclori}
+{Pekka Jääskeläinen, Carlos Sánchez de La Lama, Erik Schnetter, Kalle
+  Raiskila, Jarmo Takala, Heikki Berg}.
+\newblock pocl: A performance-portable opencl implementation.
+\newblock 2014.
+
+\bibitem{openclweb}
+{Khronos.}
+\newblock {OpenCL}.
+\newblock \url{https://www.khronos.org/opencl}, Accessed: 2015-05-30.
+
+\end{thebibliography}

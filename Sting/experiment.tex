@@ -68,3 +68,12 @@ Device & i5-4590 & 3.3GHz    & 8G DDR3 & GCC, Clang & POCL    & v0.11
 \caption{kernel execution time comparison between Halide \& OpenCL kernel fusion, fusing two kernels into one kernel}
 \label{fig:my_label_ex_6}
 \end{figure}
+
+    We test the fastest kernel execution time both the Halide OpenCL CodeGen and our approach by applying tiling(calculating multiple pixels in one work item) shown in figure~\ref{fig:my_label_ex_7}. For Halide part we chose to calculate 2048 pixels in one work item and local size is 128. For our approach part we chose to calculate 32768 pixels in one work item to let only one work group existed, so we can sync between work items. We can see as the number of pixels calculated in one work item increase, the redundant works Halide generate decrease. But how to choose the best number to get the best performance is an hard work on Halide.
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width=14cm]{img/fastest.png}
+\caption{fastest kernel execution time comparison between Halide \& OpenCL kernel fusion, fusing two kernels into one kernel}
+\label{fig:my_label_ex_7}
+\end{figure}
